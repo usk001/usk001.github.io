@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowMenu(true);
-    }, 10000); // 10 seconds
+    }, 5000); // 5 seconds
 
     return () => clearTimeout(timer);
   }, []);
@@ -47,16 +47,22 @@ function App() {
       </section>
       <section className="content">
         <div id="groom" className="profile">
-          <h2>Groom</h2>
-          <p>ここにGroomの内容を記載します。</p>
+          <div className="content-box">
+            <h2>Groom</h2>
+            <p>ここにGroomの内容を記載します。</p>
+          </div>
         </div>
         <div id="bride" className="profile">
-          <h2>Bride</h2>
-          <p>ここにBrideの内容を記載します。</p>
+          <div className="content-box">
+            <h2>Bride</h2>
+            <p>ここにBrideの内容を記載します。</p>
+          </div>
         </div>
         <div id="table-plan" className="program">
-          <h2>Table Plan</h2>
-          <p>ここにTable Planの内容を記載します。</p>
+          <div className="content-box">
+            <h2>Table Plan</h2>
+            <p>ここにTable Planの内容を記載します。</p>
+          </div>
         </div>
       </section>
     </div>
