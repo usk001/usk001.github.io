@@ -35,38 +35,61 @@ html, body {
 
 .hamburger-menu {
   position: fixed;
-  top: 0;
-  right: 0;
-  background-color: transparent; /* Transparent background */
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding: 10px 10px;
+  top: 10px;
+  right: 0px;
+  z-index: 3;
+  text-align: right;
+  text-align: -webkit-right;
 }
 
 .hamburger-button {
   background: none;
   border: none;
   color: gray; /* Gray color for the icon */
-  font-size: 32px;
+  font-size: 36px;
   cursor: pointer;
-  margin-bottom: 10px;
+  text-align: right;
+  text-align: -webkit-right;
+}
+
+.hamburger-button.white {
+  color: white; /* メニューが開いたときの白文字 */
 }
 
 .menu-items {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 30%;
+  background-color: rgba(70, 130, 180, 0.8); /* Smoky blue with 90% opacity */
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  background-color: rgba(70, 130, 180, 0.5); /* Smoky blue with 50% opacity */
-  padding: 10px;
-  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.menu-items.show {
+  transform: translateX(0);
+}
+
+.menu-item {
+  margin: 15px 0;
 }
 
 .menu-items a {
   color: white;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 18px;
+  line-height: 2; /* 行間を広げる */
+  margin: 10px 0; /* メニュー項目の上下の余白 */
+}
+
+.menu-items a:hover {
+  text-decoration: underline;
 }
 
 .content-profile {
@@ -101,7 +124,7 @@ html, body {
 }
 
 .program {
-  background-image: url('/program-background.jpg');
+  background-image: url('/program-background');
 }
 
 .content-box {
@@ -139,4 +162,57 @@ html, body {
 
 .program-event {
   font-size: 16px;
+}
+
+/* フッターのスタイル */
+.footer {
+  background-color: #f1f1f1;
+  padding: 10px 0;
+  text-align: center;
+}
+
+/* メディアクエリ: 横向き（ランドスケープ）モードの調整 */
+@media only screen and (orientation: landscape) {
+  .menu-items {
+    width: 40%; /* 横向き時のメニュー幅を調整 */
+  }
+  
+  .menu-items a {
+    font-size: 16px; /* フォントサイズを調整 */
+    margin: 5px 0; /* メニュー項目の上下の余白を調整 */
+  }
+  
+  .content-box {
+    max-width: 80%; /* 横向き時のコンテンツボックスの幅を調整 */
+  }
+
+  .background-video {
+    width: auto; /* 動画の幅を自動に */
+    height: 100%; /* 高さを100%に */
+  }
+}
+
+/* フッターのスタイル */
+.footer {
+  background-color: #f1f1f1;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.line-button img {
+  width: 30px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.footer-content p {
+  margin: 0;
+  color: #666;
+  font-size: 10px;
 }

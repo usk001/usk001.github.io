@@ -34,6 +34,10 @@ function App() {
     setMenuOpen(!menuOpen);
   };
 
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -57,17 +61,19 @@ function App() {
           Your browser does not support the video tag.
         </video>
         {showMenu && (
-          <nav className="hamburger-menu">
-            <button className="hamburger-button" onClick={toggleMenu}>☰</button>
-            {menuOpen && (
-              <div className="menu-items">
-                <a href="#groom">Groom</a>
-                <a href="#bride">Bride</a>
-                <a href="#program">Program</a>
-                <a href="#table-plan">Table Plan</a>
-              </div>
-            )}
+          <>
+          <nav className={`hamburger-menu ${menuOpen ? 'open' : ''}`}>
+            <button className={`hamburger-button ${menuOpen ? 'white' : ''}`} onClick={toggleMenu}>
+              {menuOpen ? '✕' : '☰'}
+            </button>
           </nav>
+          <div className={`menu-items ${menuOpen ? 'show' : ''}`}>
+            <a href="#groom" onClick={closeMenu}>Groom</a>
+            <a href="#bride" onClick={closeMenu}>Bride</a>
+            <a href="#program" onClick={closeMenu}>Program</a>
+            <a href="#table-plan" onClick={closeMenu}>Table Plan</a>
+          </div>
+        </>
         )}
       </section>
       <section className="content-profile">
@@ -122,6 +128,7 @@ function App() {
               onClick={openModal}
               style={{ cursor: 'pointer', maxWidth: '100%', height: 'auto' }}
             />
+            <p>スマホは横向きの方が見やすいかも...</p>
           </div>
         </div>
         {/* <PDFviewer /> */}
@@ -134,6 +141,15 @@ function App() {
           onClose={closeModal}
         />
       )}
+      {/* 追加: フッター */}
+      <footer className="footer">
+        <div className="footer-content">
+          {/* <a href="https://liff.line.me/1645278921-kWRPP32q/?accountId=wzd0101r" className="line-button">
+            <img src="/btn_base.png" alt="友達登録" />
+          </a> */}
+          <p>©︎2024 Yusuke K. All Rights Reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 }
