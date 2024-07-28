@@ -42,14 +42,14 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  padding: 10px 20px;
+  padding: 10px 10px;
 }
 
 .hamburger-button {
   background: none;
   border: none;
   color: gray; /* Gray color for the icon */
-  font-size: 24px;
+  font-size: 32px;
   cursor: pointer;
   margin-bottom: 10px;
 }
@@ -73,6 +73,8 @@ html, body {
   position: relative;
   z-index: 1;
   background: white;
+  background-image: url('/profile-background.jpg');
+  background-repeat: no-repeat;
 }
 
 .content-program {
@@ -115,4 +117,26 @@ html, body {
   cursor: pointer;
   max-width: 100%;
   height: auto;
+}
+
+/* 追加: プログラムリストのスタイル */
+.program-schedule {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 中央揃え */
+}
+
+.program-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 中央揃え */
+  margin: 10px 0;
+}
+
+.program-time {
+  font-size: 15px;
+}
+
+.program-event {
+  font-size: 16px;
 }

@@ -63,6 +63,7 @@ function App() {
               <div className="menu-items">
                 <a href="#groom">Groom</a>
                 <a href="#bride">Bride</a>
+                <a href="#program">Program</a>
                 <a href="#table-plan">Table Plan</a>
               </div>
             )}
@@ -80,6 +81,32 @@ function App() {
           <div className="content-box">
             <h2>Bride</h2>
             <p>ここにBrideの内容を記載します。</p>
+          </div>
+        </div>
+      </section>
+      {/* 追加: 当日のプログラムのセクション */}
+      <section className="content-program">
+        <div id="program" className="program parallax">
+          <div className="content-box">
+            <h2>Program</h2>
+            <div className="program-schedule">
+              <div className="program-item">
+                <div className="program-time">16:30</div>
+                <div className="program-event">挙式（人前式）</div>
+              </div>
+              <div className="program-item">
+                <div className="program-time">16:55</div>
+                <div className="program-event">集合写真撮影@ガーデン</div>
+              </div>
+              <div className="program-item">
+                <div className="program-time">17:05</div>
+                <div className="program-event">披露宴</div>
+              </div>
+              <div className="program-item">
+                <div className="program-time">20:00</div>
+                <div className="program-event">お披楽喜</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
