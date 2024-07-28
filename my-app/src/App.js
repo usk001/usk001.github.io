@@ -89,7 +89,7 @@ function App() {
             <h2>Table Plan</h2>
             {/* 追加: 席次表画像を表示し、クリックでモーダルを開く */}
             <img
-              src="/sekiji.jpg"
+              src="/TablePlan.jpg"
               alt="Table Plan"
               className="table-plan-image"
               onClick={openModal}
@@ -102,7 +102,7 @@ function App() {
       {/* 追加: モーダルを表示 */}
       {isModalOpen && (
         <ImageModal
-          src="/sekiji.jpg"
+          src="/TablePlan.jpg"
           alt="Table Plan"
           onClose={closeModal}
         />
