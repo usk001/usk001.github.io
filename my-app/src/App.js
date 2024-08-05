@@ -70,8 +70,8 @@ function App() {
           <div className={`menu-items ${menuOpen ? 'show' : ''}`}>
             <a href="#groom" onClick={closeMenu}>Groom</a>
             <a href="#bride" onClick={closeMenu}>Bride</a>
-            <a href="#program" onClick={closeMenu}>Program</a>
             <a href="#table-plan" onClick={closeMenu}>Table Plan</a>
+            <a href="#program" onClick={closeMenu}>Program</a>
           </div>
         </>
         )}
