@@ -78,7 +78,7 @@ function App() {
       </section>
       <section className="content-profile">
         <div id="groom" className="profile parallax">
-          <div className="content-box">
+          <div className="content-box parallax">
             <h2>Groom</h2>
             <p>ここにGroomの内容を記載します。</p>
           </div>
@@ -87,32 +87,6 @@ function App() {
           <div className="content-box">
             <h2>Bride</h2>
             <p>ここにBrideの内容を記載します。</p>
-          </div>
-        </div>
-      </section>
-      {/* 追加: 当日のプログラムのセクション */}
-      <section className="content-program">
-        <div id="program" className="program parallax">
-          <div className="content-box">
-            <h2>Program</h2>
-            <div className="program-schedule">
-              <div className="program-item">
-                <div className="program-time">16:30</div>
-                <div className="program-event">挙式（人前式）</div>
-              </div>
-              <div className="program-item">
-                <div className="program-time">16:55</div>
-                <div className="program-event">集合写真撮影@ガーデン</div>
-              </div>
-              <div className="program-item">
-                <div className="program-time">17:05</div>
-                <div className="program-event">披露宴</div>
-              </div>
-              <div className="program-item">
-                <div className="program-time">20:00</div>
-                <div className="program-event">お披楽喜</div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -141,6 +115,35 @@ function App() {
           onClose={closeModal}
         />
       )}
+      {/* 追加: 当日のプログラムのセクション */}
+      <section className="content-program">
+        <div id="program" className="program parallax">
+          <div className="content-box">
+            <h2>Program</h2>
+            <div className="program-schedule">
+              <div className="program-item">
+                <div className="program-time">16:30</div>
+                <div className="program-event">挙式（人前式）</div>
+              </div>
+              <div className="program-item">
+                <div className="program-time">16:55</div>
+                <div className="program-event">集合写真撮影@ガーデン</div>
+              </div>
+              <div className="program-item">
+                <div className="program-time">17:05</div>
+                <div className="program-event">披露宴</div>
+                <div className="program-info">下記テーブル番号順で新郎新婦もお食事予定</div>
+                <div className="program-info">新郎: 4→1→5→6→10→7→3</div>
+                <div className="program-info">新婦: 4→1→5→2→9→8</div>
+              </div>
+              <div className="program-item">
+                <div className="program-time">20:00</div>
+                <div className="program-event">お披楽喜</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* 追加: フッター */}
       <footer className="footer">
         <div className="footer-content">

@@ -164,6 +164,10 @@ html, body {
   font-size: 16px;
 }
 
+.program-info {
+  font-size: 14px;
+}
+
 /* フッターのスタイル */
 .footer {
   background-color: #f1f1f1;
