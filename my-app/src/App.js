@@ -78,7 +78,7 @@ function App() {
       </section>
       <section className="content-profile">
         <div id="groom" className="profile parallax">
-          <div className="content-box parallax">
+          <div className="content-box">
             <h2>Groom</h2>
             <p>ここにGroomの内容を記載します。</p>
           </div>
