@@ -149,7 +149,7 @@ h2:after {
   position: relative;
 }
 .scroll::before {
-  animation: scroll 3.5s infinite;
+  animation: scroll 2s infinite;
   border: solid #000;
   border-width: 0 0 1px 1px;
   content: "";
@@ -261,7 +261,8 @@ h2:after {
 }
 
 .content-box p {
-  font-size: 14px;
+  font-size: 0.8rem;
+  text-align: justify; /* テキストを左右に均等配置 */
 }
 
 .image-cursor {

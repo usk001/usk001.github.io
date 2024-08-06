@@ -83,9 +83,19 @@ function App() {
         <VideoComponent src="/top.mp4" className="background-video" />
       </section>
       <div className="scroll">
-        <span className="txt">Scroll</span>
+        <span className="txt">What is Lotus ?</span>
       </div>
       <div className=""></div>
+      <section className="content, program">
+          <div className="content-box">
+            <p>古代エジプトではロータス（睡蓮）は愛や感謝、友情の象徴として描かれていました。エジプトの歴代王朝の中でも「王の中の王」と称えられたラムセス2世が、愛する王妃ネフェルタリのために建造したアブ・シンベル神殿やルクソールにある王家の谷の壁画にも多く描かれています。</p>
+            <p>（新郎もそれにあやかり、エジプト旅行中にロータスのピアスを贈りプロポーズしました。）</p>
+            <p>　</p>
+            <p>今日はご出席いただきありがとうございます！</p>
+            <p>これからいよいよもうすぐ披露宴が始まります。</p>
+            <p>どうぞ楽しいひとときをお過ごしください。</p>
+          </div>
+      </section>
       <TickerLoop /> 
       <ProfileSection
         id="groom"
@@ -121,7 +131,7 @@ function App() {
               onClick={() => openModal('/TablePlan.jpg', 'Table Plan')}
               style={{ cursor: 'pointer', maxWidth: '100%', height: 'auto' }}
             />
-            <p>スマホは横向きの方が見やすいかもです...</p>
+            <p>　見づらくてすみません！スマホを横にすれば多少...</p>
           </div>
         </div>
         {/* <PDFviewer /> */}
