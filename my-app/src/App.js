@@ -62,24 +62,25 @@ function App() {
   return (
     <div className="App">
       <BackgroundAnimation />
+      <header className="header">
+        <img src="/logo.png" alt="Logo" className="header-logo" /> {/* ロゴを追加 */}
+        <nav className={`hamburger-menu ${menuOpen ? 'open' : ''}`}>
+          <button className={`hamburger-button ${menuOpen ? 'white' : ''}`} onClick={toggleMenu}>
+            {menuOpen ? '✕' : '☰'}
+          </button>
+        </nav>
+        {showMenu && (
+          <div className={`menu-items ${menuOpen ? 'show' : ''}`}>
+            <a href="#groom" onClick={closeMenu}>Groom</a>
+            <a href="#bride" onClick={closeMenu}>Bride</a>
+            <a href="#table-plan" onClick={closeMenu}>Table Plan</a>
+            <a href="#program" onClick={closeMenu}>Program</a>
+            <a href="#message" onClick={closeMenu}>Message</a>
+          </div>
+        )}
+      </header>
       <section className="video-section">
         <VideoComponent src="/top.mp4" className="background-video" />
-        {showMenu && (
-          <>
-            <nav className={`hamburger-menu ${menuOpen ? 'open' : ''}`}>
-              <button className={`hamburger-button ${menuOpen ? 'white' : ''}`} onClick={toggleMenu}>
-                {menuOpen ? '✕' : '☰'}
-              </button>
-            </nav>
-            <div className={`menu-items ${menuOpen ? 'show' : ''}`}>
-              <a href="#groom" onClick={closeMenu}>Groom</a>
-              <a href="#bride" onClick={closeMenu}>Bride</a>
-              <a href="#table-plan" onClick={closeMenu}>Table Plan</a>
-              <a href="#program" onClick={closeMenu}>Program</a>
-              <a href="#message" onClick={closeMenu}>Message</a>
-            </div>
-          </>
-        )}
       </section>
       <div className="scroll">
         <span className="txt">Scroll</span>
@@ -93,7 +94,9 @@ function App() {
         job="エンジニア"
         hometown="静岡県伊豆の国市"
         hobbies="旅行・アウトドア"
-        videoSrc="/Yusuke_1.mov"
+        videoSrc="/Yusuke_1.mp4"
+        instagramUrl="#"
+        xUrl="#"
       />
       <ProfileSection
         id="bride"
@@ -102,7 +105,9 @@ function App() {
         job="会社員"
         hometown="千葉県千葉市"
         hobbies="旅行・アウトドア"
-        videoSrc="/video2.mov"
+        videoSrc="/Satoko_1.mp4"
+        instagramUrl="#"
+        xUrl="#"
       />
       <section className="content">
         <div id="table-plan" className="program">
@@ -171,7 +176,7 @@ function App() {
           />
         </div>
         <div className="content-box">
-          <h2 ref={(el) => (h2Refs.current[3] = el)}>Message to the Bride</h2>
+          <h2 ref={(el) => (h2Refs.current[3] = el)}>Message to Bride</h2>
           <p>　</p>
           <img
             src="/MessageToBride1.jpg"
