@@ -1,32 +1,45 @@
 import React, { useState, useEffect, useRef } from 'react';
 // import PDFviewer from './PDFviewer'; //PDF
-import ImageModal from './ImageModal'; // 追加: ImageModalコンポーネントをインポート
+import ImageModal from './ImageModal';
+import VideoComponent from './VideoComponent';
+import ProfileSection from './ProfileSection';
+import TickerLoop from './TickerLoop'; 
+import BackgroundAnimation from './BackgroundAnimation';
 import './App.css';
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); // 追加: モーダルの状態管理
-  const videoRef = useRef(null);
+  const [modalImage, setModalImage] = useState({ src: '', alt: '' });
+  const h2Refs = useRef([]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowMenu(true);
-    }, 5000); // 5 seconds
+    }, 5000);
 
-    const handleScroll = () => {
-      const parallaxElements = document.querySelectorAll('.parallax');
-      parallaxElements.forEach(element => {
-        const offset = window.pageYOffset;
-        element.style.backgroundPositionY = `${offset * 0.5}px`;
+    const currentRefs = h2Refs.current;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('slide-in');
+        }
       });
-    };
+    });
 
-    window.addEventListener('scroll', handleScroll);
+    currentRefs.forEach((h2Element) => {
+      if (h2Element) {
+        observer.observe(h2Element);
+      }
+    });
 
     return () => {
       clearTimeout(timer);
-      window.removeEventListener('scroll', handleScroll);
+      currentRefs.forEach((h2Element) => {
+        if (h2Element) {
+          observer.unobserve(h2Element);
+        }
+      });
     };
   }, []);
 
@@ -38,88 +51,81 @@ function App() {
     setMenuOpen(false);
   };
 
-  const openModal = () => {
-    setIsModalOpen(true);
+  const openModal = (src, alt) => {
+    setModalImage({ src, alt });
   };
 
   const closeModal = () => {
-    setIsModalOpen(false);
+    setModalImage({ src: '', alt: '' });
   };
 
   return (
     <div className="App">
+      <BackgroundAnimation />
       <section className="video-section">
-        <video
-          ref={videoRef}
-          className="background-video"
-          autoPlay
-          loop
-          muted
-          playsInline
-        >
-          <source src="/top.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <VideoComponent src="/top.mp4" className="background-video" />
         {showMenu && (
           <>
-          <nav className={`hamburger-menu ${menuOpen ? 'open' : ''}`}>
-            <button className={`hamburger-button ${menuOpen ? 'white' : ''}`} onClick={toggleMenu}>
-              {menuOpen ? '✕' : '☰'}
-            </button>
-          </nav>
-          <div className={`menu-items ${menuOpen ? 'show' : ''}`}>
-            <a href="#groom" onClick={closeMenu}>Groom</a>
-            <a href="#bride" onClick={closeMenu}>Bride</a>
-            <a href="#table-plan" onClick={closeMenu}>Table Plan</a>
-            <a href="#program" onClick={closeMenu}>Program</a>
-          </div>
-        </>
+            <nav className={`hamburger-menu ${menuOpen ? 'open' : ''}`}>
+              <button className={`hamburger-button ${menuOpen ? 'white' : ''}`} onClick={toggleMenu}>
+                {menuOpen ? '✕' : '☰'}
+              </button>
+            </nav>
+            <div className={`menu-items ${menuOpen ? 'show' : ''}`}>
+              <a href="#groom" onClick={closeMenu}>Groom</a>
+              <a href="#bride" onClick={closeMenu}>Bride</a>
+              <a href="#table-plan" onClick={closeMenu}>Table Plan</a>
+              <a href="#program" onClick={closeMenu}>Program</a>
+              <a href="#message" onClick={closeMenu}>Message</a>
+            </div>
+          </>
         )}
       </section>
-      <section className="content-profile">
-        <div id="groom" className="profile parallax">
+      <div className="scroll">
+        <span className="txt">Scroll</span>
+      </div>
+      <div className=""></div>
+      <TickerLoop /> 
+      <ProfileSection
+        id="groom"
+        name="勝村 祐介"
+        birthdate="1989年3月29日"
+        job="エンジニア"
+        hometown="静岡県伊豆の国市"
+        hobbies="旅行・アウトドア"
+        videoSrc="/Yusuke_1.mov"
+      />
+      <ProfileSection
+        id="bride"
+        name="松崎 里子"
+        birthdate="1987年7月5日"
+        job="会社員"
+        hometown="千葉県千葉市"
+        hobbies="旅行・アウトドア"
+        videoSrc="/video2.mov"
+      />
+      <section className="content">
+        <div id="table-plan" className="program">
           <div className="content-box">
-            <h2>Groom</h2>
-            <p>ここにGroomの内容を記載します。</p>
-          </div>
-        </div>
-        <div id="bride" className="profile parallax">
-          <div className="content-box">
-            <h2>Bride</h2>
-            <p>ここにBrideの内容を記載します。</p>
-          </div>
-        </div>
-      </section>
-      <section className="content-program">
-        <div id="table-plan" className="program parallax">
-          <div className="content-box">
-            <h2>Table Plan</h2>
-            {/* 追加: 席次表画像を表示し、クリックでモーダルを開く */}
+            <h2 ref={(el) => (h2Refs.current[0] = el)}>Table Plan</h2>
+            <p>　</p>
             <img
               src="/TablePlan.jpg"
               alt="Table Plan"
-              className="table-plan-image"
-              onClick={openModal}
+              className="image-cursor"
+              onClick={() => openModal('/TablePlan.jpg', 'Table Plan')}
               style={{ cursor: 'pointer', maxWidth: '100%', height: 'auto' }}
             />
-            <p>スマホは横向きの方が見やすいかも...</p>
+            <p>スマホは横向きの方が見やすいかもです...</p>
           </div>
         </div>
         {/* <PDFviewer /> */}
       </section>
-      {/* 追加: モーダルを表示 */}
-      {isModalOpen && (
-        <ImageModal
-          src="/TablePlan.jpg"
-          alt="Table Plan"
-          onClose={closeModal}
-        />
-      )}
-      {/* 追加: 当日のプログラムのセクション */}
-      <section className="content-program">
-        <div id="program" className="program parallax">
+      <section className="content">
+        <div id="program" className="program">
           <div className="content-box">
-            <h2>Program</h2>
+            <h2 ref={(el) => (h2Refs.current[1] = el)}>Program</h2>
+            <p>　</p>
             <div className="program-schedule">
               <div className="program-item">
                 <div className="program-time">16:30</div>
@@ -144,7 +150,53 @@ function App() {
           </div>
         </div>
       </section>
-      {/* 追加: フッター */}
+      <section className="content">
+      <div id="message" className="content-message">
+        <div className="content-box">
+          <h2 ref={(el) => (h2Refs.current[2] = el)}>Message to Groom</h2>
+          <p>　</p>
+          <img
+            src="/MessageToGroom1.jpg"
+            alt="Message To Groom"
+            className="image-cursor"
+            // onClick={() => openModal('/MessageToGroom1.jpg', 'Message To Groom')}
+            // style={{ cursor: 'pointer', maxWidth: '100%', height: 'auto' }}
+          />
+          <img
+            src="/MessageToGroom2.jpg"
+            alt="Message To Groom"
+            className="image-cursor"
+            // onClick={() => openModal('/MessageToGroom2.jpg', 'Message To Groom')}
+            // style={{ cursor: 'pointer', maxWidth: '100%', height: 'auto' }}
+          />
+        </div>
+        <div className="content-box">
+          <h2 ref={(el) => (h2Refs.current[3] = el)}>Message to the Bride</h2>
+          <p>　</p>
+          <img
+            src="/MessageToBride1.jpg"
+            alt="Message To Bride"
+            className="image-cursor"
+            // onClick={() => openModal('/MessageToBride1.jpg', 'Message To Bride')}
+            // style={{ cursor: 'pointer', maxWidth: '100%', height: 'auto' }}
+          />
+          <img
+            src="/MessageToBride2.jpg"
+            alt="Message To Bride"
+            className="image-cursor"
+            // onClick={() => openModal('/MessageToBride2.jpg', 'Message To Bride')}
+            // style={{ cursor: 'pointer', maxWidth: '100%', height: 'auto' }}
+          />
+        </div>
+      </div>
+      </section>
+      {modalImage.src && (
+        <ImageModal
+          src={modalImage.src}
+          alt={modalImage.alt}
+          onClose={closeModal}
+        />
+      )}
       <footer className="footer">
         <div className="footer-content">
           {/* <a href="https://liff.line.me/1645278921-kWRPP32q/?accountId=wzd0101r" className="line-button">

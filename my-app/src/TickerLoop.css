@@ -1,0 +1,38 @@
+.ticker-loop {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0); /* 背景色を設定 */
+  padding: 10px 0; /* 上下の余白を追加 */
+  margin-top: 10vh;
+}
+
+.ticker-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: tickerAnimation 60s linear infinite;
+}
+
+.ticker-item {
+  display: inline-block;
+  margin-right: 50px; /* アイテム間のスペースを設定 */
+  font-size: 48px; /* フォントサイズを設定 */
+  color: #2172c3; /* テキスト色を設定 */
+}
+
+@keyframes tickerAnimation {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%); /* コンテンツの幅の半分を移動 */
+  }
+}
+
+/* スマホ画面用のレスポンシブデザイン */
+@media (max-width: 768px) {
+  .ticker-loop {
+    margin-top: 5vh;
+    padding: 5px 0; /* スマホ画面用に上下の余白を調整 */
+  }
+}

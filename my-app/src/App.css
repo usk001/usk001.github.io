@@ -5,6 +5,7 @@ html, body {
   margin: 0;
   padding: 0;
   overflow: auto;
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
 }
 
 .App {
@@ -14,29 +15,10 @@ html, body {
   position: relative;
 }
 
-.video-section {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-}
-
-.background-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  max-width: 720px; /* Original video width */
-  height: auto;
-  max-height: 1280px; /* Original video height */
-  transform: translate(-50%, -50%);
-  z-index: -1;
-}
-
 .hamburger-menu {
   position: fixed;
   top: 10px;
-  right: 0px;
+  right: 15px;
   z-index: 3;
   text-align: right;
   text-align: -webkit-right;
@@ -45,7 +27,7 @@ html, body {
 .hamburger-button {
   background: none;
   border: none;
-  color: gray; /* Gray color for the icon */
+  color: gray;
   font-size: 36px;
   cursor: pointer;
   text-align: right;
@@ -53,7 +35,7 @@ html, body {
 }
 
 .hamburger-button.white {
-  color: white; /* メニューが開いたときの白文字 */
+  color: white;
 }
 
 .menu-items {
@@ -62,7 +44,7 @@ html, body {
   right: 0;
   height: 100%;
   width: 30%;
-  background-color: rgba(70, 130, 180, 0.8); /* Smoky blue with 90% opacity */
+  background-color: rgba(70, 130, 180, 0.8);
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
   display: flex;
@@ -84,75 +66,184 @@ html, body {
   color: white;
   text-decoration: none;
   font-size: 18px;
-  line-height: 2; /* 行間を広げる */
-  margin: 10px 0; /* メニュー項目の上下の余白 */
+  line-height: 2;
+  margin: 10px 0;
 }
 
 .menu-items a:hover {
   text-decoration: underline;
 }
 
+/* スライドインアニメーション */
+h2 {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.0s ease-out, transform 1.0s ease-out;
+  padding-bottom: 3px; /* テキストと下線の距離を調整 */
+  color: #2172c3;
+  position: relative;
+  display: inline-block;
+  padding: 0 30px;
+}
+
+h2.slide-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h2:before, h2:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background-color: black;
+}
+h2:before {
+  left:0;
+}
+h2:after {
+  right: 0;
+}
+
+.video-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  max-width: 720px; /* Original video width */
+  height: auto;
+  max-height: 1280px; /* Original video height */
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.scroll {
+  display: inline-block;
+  padding-top: 70px;
+  position: relative;
+}
+.scroll::before {
+  animation: scroll 3.5s infinite;
+  border: solid #000;
+  border-width: 0 0 1px 1px;
+  content: "";
+  display: inline-block;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  transform: rotate(-45deg);
+  width: 20px;
+  height: 20px;
+}
+@keyframes scroll {
+  0% {
+    transform: rotate(-45deg) translate(0, 0);
+  }
+  80% {
+    transform: rotate(-45deg) translate(-30px, 30px);
+  }
+  0%, 80%, 100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
 .content-profile {
   position: relative;
-  z-index: 1;
-  background: white;
-  background-image: url('/profile-background.jpg');
-  background-repeat: no-repeat;
-}
-
-.content-program {
-  position: relative;
-  z-index: 1;
-  background: white;
-}
-
-.parallax {
-  position: relative;
-  overflow: hidden;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background-size: cover;
-  background-position: center;
-  background-attachment: scroll; /* Change from fixed to scroll */
 }
 
 .profile {
-  background-image: url('/');
+  position: relative;
+  height: 90vh;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 0vh; /* セクション間のスペースを確保 */
+}
+
+.profile-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  /* height: 100%; */
+  max-height: 80vh; /* 動画の最大高さを画面の高さに設定 */
+  object-fit: cover; /* 動画がセクション全体をカバーするように */
+  transform: translate(-50%, -50%);
+  z-index: -1; /* テキストを上に表示 */
+  border-radius: 15px; /* 角を丸くする */
+}
+
+.text-overlay {
+  position: absolute;
+  bottom: 12%;
+  left: 10%;
+  color: #f1f1f1;
+  background: rgba(0, 0, 0, 0.0);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-align: left;
+  max-width: fit-content;
+  z-index: 1; /* テキストを動画の上に表示 */
+}
+
+.content {
+  position: relative;
+  /* height: 70vh; */
+  width: 100%;
+  overflow: hidden;
 }
 
 .program {
-  background-image: url('/program-background');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-bottom: 5vh; /* セクション間のスペースを確保 */
 }
 
-.content-box {
-  background-color: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
-  color: #333; /* Dark gray text color */
-  padding: 20px;
-  border-radius: 15px; /* Rounded corners */
-  max-width: 600px;
-  margin: auto;
+.program .content-box {
+  max-width: 90%;
+  margin: auto; /* 中央揃え */
+  padding: 20px; /* 内側の余白を追加 */
+  background-color: rgba(255, 255, 255, 0.7); /* 背景色と透明度を追加 */
+  border-radius: 10px; /* 角を丸める */
 }
 
-.table-plan-image {
+.content-box p {
+  font-size: 14px;
+}
+
+.image-cursor {
   cursor: pointer;
   max-width: 100%;
   height: auto;
 }
 
-/* 追加: プログラムリストのスタイル */
 .program-schedule {
   display: flex;
   flex-direction: column;
-  align-items: center; /* 中央揃え */
+  align-items: center;
+  margin-bottom: 0vh; /* セクション間のスペースを確保 */
 }
 
 .program-item {
   display: flex;
   flex-direction: column;
-  align-items: center; /* 中央揃え */
+  align-items: center;
   margin: 10px 0;
 }
 
@@ -168,35 +259,23 @@ html, body {
   font-size: 14px;
 }
 
-/* フッターのスタイル */
-.footer {
-  background-color: #f1f1f1;
-  padding: 10px 0;
-  text-align: center;
+.content-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
-/* メディアクエリ: 横向き（ランドスケープ）モードの調整 */
-@media only screen and (orientation: landscape) {
-  .menu-items {
-    width: 40%; /* 横向き時のメニュー幅を調整 */
-  }
-  
-  .menu-items a {
-    font-size: 16px; /* フォントサイズを調整 */
-    margin: 5px 0; /* メニュー項目の上下の余白を調整 */
-  }
-  
-  .content-box {
-    max-width: 80%; /* 横向き時のコンテンツボックスの幅を調整 */
-  }
-
-  .background-video {
-    width: auto; /* 動画の幅を自動に */
-    height: 100%; /* 高さを100%に */
-  }
+.content-message .content-box {
+  max-width: 90%;
+  margin: auto; /* 中央揃え */
+  padding: 20px; /* 内側の余白を追加 */
+  background-color: rgba(255, 255, 255, 0.7); /* 背景色と透明度を追加 */
+  border-radius: 10px; /* 角を丸める */
+  margin-bottom: 5vh; /* セクション間のスペースを確保 */
 }
 
-/* フッターのスタイル */
 .footer {
   background-color: #f1f1f1;
   padding: 10px 0;
@@ -209,14 +288,77 @@ html, body {
   align-items: center;
 }
 
-.line-button img {
-  width: 30px;
-  height: auto;
-  margin-bottom: 10px;
-}
-
 .footer-content p {
   margin: 0;
   color: #666;
   font-size: 10px;
+}
+
+/* スマホ画面用のレスポンシブデザイン */
+@media (max-width: 768px) {
+  .video-section {
+    height: 95vh;
+    width: 100%;
+  }
+
+  .background-video {
+    width: 95%;
+  }
+
+  .profile-video {
+    top: 50%;
+    left: 50%;
+    /* width: 90%; */
+    /* height: 100%; */
+  }
+  
+  .text-overlay {
+    bottom: 14%;
+    left: 12%;
+    font-size: 0.8rem;
+  }
+}
+
+/* @media (min-width: 769px) and (max-width: 1024px) {
+  .text-overlay {
+    bottom: 22%;
+    left: 25%;
+    font-size: 15px;
+    padding: 9px;
+  }
+} */
+
+/* デバイスの画面がランドスケープ（横向き）モード */
+@media only screen and (orientation: landscape) {
+  .menu-items {
+    width: 40%;
+  }
+
+  .menu-items a {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+
+  .content-box {
+    max-width: 80%;
+  }
+
+  .background-video {
+    width: auto;
+    height: 100%;
+  }
+
+  .text-overlay {
+    position: absolute;
+    bottom: 15%;
+    left: 10%;
+    color: #f1f1f1;
+    background: rgba(0, 0, 0, 0.0);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    text-align: left;
+    max-width: fit-content;
+    z-index: 1; /* テキストを動画の上に表示 */
+  }
 }
