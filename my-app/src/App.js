@@ -131,7 +131,7 @@ function App() {
               onClick={() => openModal('/TablePlan.jpg', 'Table Plan')}
               style={{ cursor: 'pointer', maxWidth: '100%', height: 'auto' }}
             />
-            <p>　見づらくてすみません！スマホを横にすれば多少...</p>
+            <p>　見づらくてすみません！スマホ横にすれば多少...</p>
           </div>
         </div>
         {/* <PDFviewer /> */}
