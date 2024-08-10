@@ -314,6 +314,26 @@ h2:after {
   margin-bottom: 5vh; /* セクション間のスペースを確保 */
 }
 
+.hosoku {
+  text-align: center !important; /* 中央揃えにする */
+}
+
+.download-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #2172c3;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.download-button:hover {
+  background-color: #84b6eb;
+}
+
 .footer {
   background-color: #f1f1f1;
   padding: 10px 0;

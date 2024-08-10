@@ -128,10 +128,11 @@ function App() {
               src="/TablePlan.jpg"
               alt="Table Plan"
               className="image-cursor"
-              onClick={() => openModal('/TablePlan.jpg', 'Table Plan')}
+              // onClick={() => openModal('/TablePlan.jpg', 'Table Plan')}
               style={{ cursor: 'pointer', maxWidth: '100%', height: 'auto' }}
             />
-            <p>　見づらくてすみません！スマホ横にすれば多少...</p>
+            <p className='hosoku'>スマホを横にして見ていただけると...</p>
+            <a href="/TablePlan.jpg" download="TablePlan.jpg" className="download-button">席次表画像ダウンロード</a>
           </div>
         </div>
         {/* <PDFviewer /> */}
@@ -155,7 +156,7 @@ function App() {
                 <div className="program-event">披露宴</div>
                 <div className="program-info">下記テーブル番号順で新郎新婦もお食事予定</div>
                 <div className="program-info">新郎: 4→1→5→6→10→7→3</div>
-                <div className="program-info">新婦: 4→1→5→2→9→8</div>
+                <div className="program-info">新婦: 4→1→5→9→8→2</div>
               </div>
               <div className="program-item">
                 <div className="program-time">20:00</div>
