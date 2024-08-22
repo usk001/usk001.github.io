@@ -147,6 +147,8 @@ h2:after {
   display: inline-block;
   padding-top: 70px;
   position: relative;
+  width: 100%;
+  text-align: center;
 }
 .scroll::before {
   animation: scroll 2s infinite;

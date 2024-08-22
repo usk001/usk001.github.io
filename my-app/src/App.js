@@ -51,9 +51,9 @@ function App() {
     setMenuOpen(false);
   };
 
-  const openModal = (src, alt) => {
-    setModalImage({ src, alt });
-  };
+  // const openModal = (src, alt) => {
+  //   setModalImage({ src, alt });
+  // };
 
   const closeModal = () => {
     setModalImage({ src: '', alt: '' });
@@ -83,23 +83,34 @@ function App() {
         <VideoComponent src="/top.mp4" className="background-video" />
       </section>
       <div className="scroll">
-        <span className="txt">What is Lotus ?</span>
       </div>
       <div className=""></div>
+      <span className="txt">Greeting</span>
       <section className="content, program">
           <div className="content-box">
-            <p>古代エジプトではロータス（睡蓮）は愛や感謝、友情の象徴として描かれていました。エジプトの歴代王朝の中でも「王の中の王」と称えられたラムセス2世が、愛する王妃ネフェルタリのために建造したアブ・シンベル神殿やルクソールにある王家の谷の壁画にも多く描かれています。</p>
-            <p>（新郎もそれにあやかり、エジプト旅行中にロータスのピアスを贈りプロポーズしました。）</p>
-            <p>　</p>
-            <p>今日はご出席いただきありがとうございます！</p>
-            <p>これからいよいよもうすぐ披露宴が始まります。</p>
-            <p>どうぞ楽しいひとときをお過ごしください。</p>
+            <p>本日はお集まりいただきありがとうございます！</p>
+            <p>ラウンジには新郎新婦が旅をしたエジプト旅行、アルゼンチン旅行をモチーフにした飾り付けや写真を飾っていますので、式が始まるまでぜひご覧ください。</p>
+            <p>ちなみに、ウェルカムボードはエジプト旅行の写真をAIが絵にしてくれたものです・・！（新郎がAIエンジニアだけに）</p>
           </div>
       </section>
+      <div className=""></div>
+      <span className="txt">What is Lotus ?</span>
+      <section className="content, program">
+          <div className="content-box">
+            <p>ラウンジやウェルカムサイトには蓮の花がモチーフになっていますが、古代エジプトではロータス（睡蓮）は愛や感謝、友情の象徴として描かれていました。エジプトの歴代王朝の中でも「王の中の王」と称えられたラムセス2世が、愛する王妃ネフェルタリのために建造したアブ・シンベル神殿やルクソールにある王家の谷の壁画にも多く描かれています。</p>
+            <p>新郎もそれにあやかりプロポーズしました。</p>
+            <p>ラウンジにはロータスの花を渡す絵のパピルスも飾っています♪</p>
+            {/* <p>　</p>
+            <p>今日はご出席いただきありがとうございます！</p>
+            <p>これからいよいよもうすぐ披露宴が始まります。</p>
+            <p>どうぞ楽しいひとときをお過ごしください。</p> */}
+          </div>
+      </section>
+      <div className=""></div>
       <TickerLoop /> 
       <ProfileSection
         id="groom"
-        name="勝村 祐介"
+        name="ゆうすけ"
         birthdate="1989年3月29日"
         job="エンジニア"
         hometown="静岡県伊豆の国市"
@@ -110,7 +121,7 @@ function App() {
       />
       <ProfileSection
         id="bride"
-        name="松崎 里子"
+        name="さとこ"
         birthdate="1987年7月5日"
         job="会社員"
         hometown="千葉県千葉市"
@@ -215,9 +226,14 @@ function App() {
       )}
       <footer className="footer">
         <div className="footer-content">
-          {/* <a href="https://liff.line.me/1645278921-kWRPP32q/?accountId=wzd0101r" className="line-button">
-            <img src="/btn_base.png" alt="友達登録" />
-          </a> */}
+          {/* <a href="https://lin.ee/b1aCgly"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0" /></a> */}
+          <br/>
+          <h4>AIさとこ？</h4>
+          <p>　</p>
+          <a href="https://lin.ee/b1aCgly" className="line-button">
+            <img src="/btn_base.png" alt="友だち追加" height="36" border="0" />
+          </a>
+          <br/>
           <p>©︎2024 Yusuke K. All Rights Reserved.</p>
         </div>
       </footer>
