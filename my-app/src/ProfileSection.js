@@ -1,11 +1,34 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import VideoComponent from './VideoComponent';
 import { FcLike } from "react-icons/fc";
 import InstagramIcon from './InstagramIcon';
 import XIcon from './XIcon';
 
 const ProfileSection = ({ id, name, birthdate, job, hometown, hobbies, videoSrc, instagramUrl, xUrl }) => {
-  const videoRef = React.useRef(null);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const videoElement = videoRef.current;
+  
+    if (videoElement) {
+      // 再生速度を0.7に設定
+      videoElement.playbackRate = 0.7;
+  
+      const handleVideoClick = () => {
+        if (videoElement.paused) {
+          videoElement.play();
+        } else {
+          videoElement.pause();
+        }
+      };
+  
+      videoElement.addEventListener('click', handleVideoClick);
+  
+      return () => {
+        videoElement.removeEventListener('click', handleVideoClick);
+      };
+    }
+  }, []);
 
   return (
     <div id={id} className="profile">
@@ -18,8 +41,8 @@ const ProfileSection = ({ id, name, birthdate, job, hometown, hobbies, videoSrc,
         趣味: {hobbies}
       </div>
       <div className="social-icons">
-        <FcLike className="fc-like" style={{ color: '#00a6ff' }} /> {/* 追加 */}
-        {instagramUrl && <a href={instagramUrl} rel="noopener noreferrer"><InstagramIcon /></a>} {/* target="_blank"もつける */}
+        <FcLike className="fc-like" style={{ color: '#00a6ff' }} />
+        {instagramUrl && <a href={instagramUrl} rel="noopener noreferrer"><InstagramIcon /></a>}
         {xUrl && <a href={xUrl} rel="noopener noreferrer"><XIcon /></a>}
       </div>
     </div>

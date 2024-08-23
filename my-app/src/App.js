@@ -142,7 +142,7 @@ function App() {
               // onClick={() => openModal('/TablePlan.jpg', 'Table Plan')}
               style={{ cursor: 'pointer', maxWidth: '100%', height: 'auto' }}
             />
-            <p className='hosoku'>スマホを横にして見ていただけると...</p>
+            <p className='hosoku'>拡大するか横向きにして見ていただけると...</p>
             <a href="/TablePlan.jpg" download="TablePlan.jpg" className="download-button">席次表画像ダウンロード</a>
           </div>
         </div>
